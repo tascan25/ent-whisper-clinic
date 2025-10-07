@@ -2,6 +2,9 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Stethoscope, Hospital, HeartPulse, CheckCircle2 } from "lucide-react";
+import nurse from "@/assets/icons/nurse.png"
+import scope from "@/assets/icons/scope.png"
+import hr from "@/assets/icons/hr.png"
 
 const diagnosticServices = [
   "Nasoendoscopy",
@@ -29,6 +32,12 @@ const surgicalServices = [
   "Salivary gland surgery",
 ];
 
+const AdditionalServices = [
+"Gynaecologist available", 
+"Paediatrician available"
+
+]
+
 const ServiceCard = ({ title, services, icon: Icon, delay, gradient }: any) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
@@ -48,7 +57,11 @@ const ServiceCard = ({ title, services, icon: Icon, delay, gradient }: any) => {
           animate={{ rotate: [0, 5, -5, 0] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
         >
-          <Icon className="h-8 w-8 md:h-10 md:w-10 text-primary-foreground" />
+         <img
+                  src={Icon}
+                  alt="Girl in a jacket"
+                  className="w-12 h-12 "
+                />
         </motion.div>
         <h3 className="text-2xl md:text-3xl font-bold text-primary">{title}</h3>
       </div>
@@ -122,20 +135,28 @@ const Services = () => {
           <ServiceCard
             title="Diagnostic Procedures"
             services={diagnosticServices}
-            icon={Stethoscope}
+            icon={scope}
             delay={0.2}
             gradient="bg-gradient-primary"
           />
           <ServiceCard
             title="Surgical Procedures"
             services={surgicalServices}
-            icon={Hospital}
+            icon={nurse}
             delay={0.4}
-            gradient="bg-gradient-accent"
+            gradient="bg-gradient-primary"
+          />
+
+            <ServiceCard
+            title="Additional Facilities"
+            services={AdditionalServices}
+            icon={hr}
+            delay={0.4}
+            gradient="bg-gradient-primary"
           />
         </div>
 
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.6, delay: 0.6 }}
@@ -172,7 +193,7 @@ const Services = () => {
               <span className="text-sm md:text-base leading-relaxed">Paediatrician available</span>
             </motion.li>
           </ul>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );

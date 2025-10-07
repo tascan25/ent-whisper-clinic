@@ -1,6 +1,10 @@
 import { motion } from "framer-motion";
 import { Phone, Clock, Video, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import tel from "@/assets/icons/tel.png";
+import online from "@/assets/icons/online.png";
+import cons from "@/assets/icons/cons.png"
+import clock from "@/assets/icons/clock.png"
 
 const Hero = () => {
   return (
@@ -99,7 +103,11 @@ const Hero = () => {
           >
             <a href="#contact" className="w-full sm:w-auto">
               <Button size="lg" className="w-full sm:w-auto bg-gradient-primary hover:opacity-90 hover:scale-105 transition-all duration-300 text-primary-foreground shadow-xl">
-                <Phone className="mr-2 h-5 w-5" />
+                  <img
+                  src={tel}
+                  alt="Girl in a jacket"
+                  className="w-6 h-6 "
+                />
                 Book Appointment
               </Button>
             </a>
@@ -125,7 +133,11 @@ const Hero = () => {
                 animate={{ rotate: [0, 5, -5, 0] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               >
-                <Clock className="h-10 w-10 md:h-12 md:w-12 text-primary mx-auto mb-4 group-hover:scale-110 transition-transform" />
+                 <img
+                  src={clock}
+                  alt="Girl in a jacket"
+                  className="h-10 w-10 md:h-12 md:w-12 text-accent mx-auto mb-4 group-hover:scale-110 transition-transform "
+                />
               </motion.div>
               <h3 className="font-bold text-lg md:text-xl mb-3 text-primary">Clinic Hours</h3>
               <p className="text-sm md:text-base text-muted-foreground font-medium">9:30 AM - 1:30 PM</p>
@@ -140,7 +152,11 @@ const Hero = () => {
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               >
-                <Video className="h-10 w-10 md:h-12 md:w-12 text-secondary mx-auto mb-4 group-hover:scale-110 transition-transform" />
+                  <img
+                  src={online}
+                  alt="Girl in a jacket"
+                  className="h-10 w-10 md:h-12 md:w-12 text-accent mx-auto mb-4 group-hover:scale-110 transition-transform "
+                />
               </motion.div>
               <h3 className="font-bold text-lg md:text-xl mb-3 text-secondary">Teleconsultation</h3>
               <p className="text-sm md:text-base text-muted-foreground">Available for remote</p>
@@ -155,9 +171,13 @@ const Hero = () => {
                 animate={{ scale: [1, 1.1, 1] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               >
-                <Phone className="h-10 w-10 md:h-12 md:w-12 text-accent mx-auto mb-4 group-hover:scale-110 transition-transform" />
+                  <img
+                  src={cons}
+                  alt="Girl in a jacket"
+                  className="h-10 w-10 md:h-12 md:w-12 text-accent mx-auto mb-4 group-hover:scale-110 transition-transform "
+                />
               </motion.div>
-              <h3 className="font-bold text-lg md:text-xl mb-3 text-accent">Consultation Fee</h3>
+              <h3 className="font-bold text-lg md:text-xl mb-3 text-primary">Consultation Fee</h3>
               <p className="text-3xl md:text-4xl font-bold gradient-text">₹1,000</p>
             </motion.div>
           </motion.div>
