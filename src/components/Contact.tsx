@@ -1,12 +1,15 @@
+// Contact.tsx (updated)
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Phone, Clock, Video, PhoneCall } from "lucide-react";
+import { Phone, Clock, Video, PhoneCall, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import cal from "@/assets/icons/cal.png";
 import tel from "@/assets/icons/tel.png";
 import online from "@/assets/icons/online.png";
-import clock from "@/assets/icons/clock.png"
+import clock from "@/assets/icons/clock.png";
+import location from "@/assets/icons/location.png";
+
 const Contact = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
@@ -22,7 +25,12 @@ const Contact = () => {
     {
       icon: cal,
       title: "Appointment Booking",
-      details: ["8860302103", "During clinic hours"],
+      details: [
+        "9311490046",
+        "8860302103",
+        "011-41323021",
+        "During clinic hours",
+      ],
       color: "text-secondary",
       gradient: "bg-gradient-primary",
     },
@@ -33,7 +41,20 @@ const Contact = () => {
       color: "text-accent",
       gradient: "bg-gradient-primary",
     },
+    // Fixed: provide a details array and a maps link for directions
+    {
+      icon: location,
+      title: "Get Directions",
+      details: ["C4A/52A, Major S Srikumar Marg, Janakpuri, Delhi 110058"],
+      // Prefer coordinates for accuracy — you can replace destination with coordinates if desired:
+      link: "https://www.google.com/maps/dir/?api=1&destination=28.6208175,77.089915",
+      color: "text-accent",
+      gradient: "bg-gradient-primary",
+    },
   ];
+
+  // helper to test if a detail looks like a phone number (simple test)
+  const isPhone = (s: string) => /^\+?\d[\d\s-]{4,}$/.test(s);
 
   return (
     <section
@@ -107,36 +128,85 @@ const Contact = () => {
               >
                 <img
                   src={info.icon}
-                  alt="Girl in a jacket"
-                  className="w-14 h-14 "
+                  alt={info.title + " icon"}
+                  className="w-14 h-14"
                 />
               </motion.div>
+
               <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-primary">
                 {info.title}
               </h3>
-              {info.details.map((detail, idx) =>
-                detail === "During clinic hours" ||
-                detail === "Available online" ||
-                detail === "Book via phone" ? (
-                  <p
-                    key={idx}
-                    className="text-sm md:text-base text-muted-foreground mb-1 font-medium flex flex-row justify-center items-center"
-                  >
-                    {detail}
-                  </p>
-                ) : (
-                  <a
-                    key={idx}
-                    href={`tel:+91${detail}`}
-                    className="text-sm md:text-base text-muted-foreground mb-1 font-medium flex flex-row justify-center items-center cursor-pointer"
-                  >
-                    <span>
-                      <Phone className="mr-2 h-5 w-5" />
-                    </span>
-                    {detail}
-                  </a>
-                )
-              )}
+
+              {/* Render details (phones, messages) or a map link when provided */}
+              {Array.isArray(info.details) &&
+                info.details.map((detail, idx) => {
+                  // If this info object includes a link (maps), make the detail clickable
+                  if (info.link) {
+                    return (
+                      <a
+                        key={idx}
+                        href={info.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm md:text-base text-muted-foreground mb-1 font-medium flex flex-row justify-center items-center cursor-pointer"
+                        aria-label={`Open directions to ${detail} in Google Maps`}
+                      >
+                        <span>
+                          <MapPin className="mr-2 h-5 w-5" />
+                        </span>
+                        {detail}
+                      </a>
+                    );
+                  }
+
+                  // Plain text notes (During clinic hours, Available online, etc.)
+                  if (
+                    detail === "During clinic hours" ||
+                    detail === "Available online" ||
+                    detail === "Book via phone"
+                  ) {
+                    return (
+                      <p
+                        key={idx}
+                        className="text-sm md:text-base text-muted-foreground mb-1 font-medium flex flex-row justify-center items-center"
+                      >
+                        {detail}
+                      </p>
+                    );
+                  }
+
+                  // Otherwise, assume it's a phone number — render tel: link
+                  if (isPhone(detail)) {
+                    // normalize number for tel: (remove spaces/dashes)
+                    const normalized = detail.replace(/[^\d+]/g, "");
+                    // if no leading +, assume +91 for Indian numbers (optional)
+                    const telHref = normalized.startsWith("+")
+                      ? `tel:${normalized}`
+                      : `tel:+91${normalized}`;
+                    return (
+                      <a
+                        key={idx}
+                        href={telHref}
+                        className="text-sm md:text-base text-muted-foreground mb-1 font-medium flex flex-row justify-center items-center cursor-pointer"
+                      >
+                        <span>
+                          <Phone className="mr-2 h-5 w-5" />
+                        </span>
+                        {detail}
+                      </a>
+                    );
+                  }
+
+                  // Fallback: render plain text
+                  return (
+                    <p
+                      key={idx}
+                      className="text-sm md:text-base text-muted-foreground mb-1 font-medium flex flex-row justify-center items-center"
+                    >
+                      {detail}
+                    </p>
+                  );
+                })}
             </motion.div>
           ))}
         </div>
@@ -157,11 +227,7 @@ const Contact = () => {
                 className="flex flex-col sm:flex-row items-center justify-center gap-4 p-4 md:p-6 rounded-2xl bg-primary/5 hover:bg-primary/10 transition-colors"
                 whileHover={{ scale: 1.05 }}
               >
-                 <img
-                  src={clock}
-                  alt="Girl in a jacket"
-                  className="w-12 h-12 "
-                />
+                <img src={clock} alt="clock icon" className="w-12 h-12 " />
                 <div className="text-center sm:text-left">
                   <p className="font-bold text-base md:text-lg text-primary">
                     Morning Session
@@ -175,11 +241,7 @@ const Contact = () => {
                 className="flex flex-col sm:flex-row items-center justify-center gap-4 p-4 md:p-6 rounded-2xl bg-secondary/5 hover:bg-secondary/10 transition-colors"
                 whileHover={{ scale: 1.05 }}
               >
-                 <img
-                  src={clock}
-                  alt="Girl in a jacket"
-                  className="w-12 h-12 "
-                />
+                <img src={clock} alt="clock icon" className="w-12 h-12 " />
                 <div className="text-center sm:text-left">
                   <p className="font-bold text-base md:text-lg text-secondary">
                     Evening Session

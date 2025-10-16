@@ -3,14 +3,18 @@ import { Phone, Clock, Video, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import tel from "@/assets/icons/tel.png";
 import online from "@/assets/icons/online.png";
-import cons from "@/assets/icons/cons.png"
-import clock from "@/assets/icons/clock.png"
+import cons from "@/assets/icons/cons.png";
+import clock from "@/assets/icons/clock.png";
+import location from "@/assets/icons/location.png";
 
 const Hero = () => {
   return (
-    <section id="home" className="min-h-screen relative overflow-hidden flex items-center justify-center px-4 py-20 md:py-0">
+    <section
+      id="home"
+      className="min-h-screen relative overflow-hidden flex items-center justify-center px-4 py-20 md:py-0"
+    >
       <div className="absolute inset-0 bg-gradient-secondary" />
-      
+
       {/* Animated background elements */}
       <motion.div
         className="absolute top-10 md:top-20 left-5 md:left-20 w-48 md:w-96 h-48 md:h-96 rounded-full bg-primary/20 blur-3xl"
@@ -76,7 +80,7 @@ const Hero = () => {
           >
             Dr. Abha Bhatnagar
           </motion.h1>
-          
+
           <motion.p
             className="text-xl sm:text-2xl md:text-3xl text-primary mb-3 md:mb-4 font-semibold"
             initial={{ opacity: 0 }}
@@ -85,14 +89,15 @@ const Hero = () => {
           >
             ENT Specialist
           </motion.p>
-          
+
           <motion.p
             className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 md:mb-12 max-w-2xl mx-auto px-4 leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
           >
-            Providing comprehensive ear, nose, and throat care with advanced diagnostic procedures and surgical expertise
+            Providing comprehensive ear, nose, and throat care with advanced
+            diagnostic procedures and surgical expertise
           </motion.p>
 
           <motion.div
@@ -102,17 +107,20 @@ const Hero = () => {
             transition={{ delay: 0.8, duration: 0.8 }}
           >
             <a href="#contact" className="w-full sm:w-auto">
-              <Button size="lg" className="w-full sm:w-auto bg-gradient-primary hover:opacity-90 hover:scale-105 transition-all duration-300 text-primary-foreground shadow-xl">
-                  <img
-                  src={tel}
-                  alt="Girl in a jacket"
-                  className="w-6 h-6 "
-                />
+              <Button
+                size="lg"
+                className="w-full sm:w-auto bg-gradient-primary hover:opacity-90 hover:scale-105 transition-all duration-300 text-primary-foreground shadow-xl"
+              >
+                <img src={tel} alt="Girl in a jacket" className="w-6 h-6 " />
                 Book Appointment
               </Button>
             </a>
             <a href="#services" className="w-full sm:w-auto">
-              <Button size="lg" variant="outline" className="w-full sm:w-auto border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:scale-105 transition-all duration-300">
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full sm:w-auto border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:scale-105 transition-all duration-300"
+              >
                 View Services
               </Button>
             </a>
@@ -120,66 +128,125 @@ const Hero = () => {
 
           {/* Quick Info Cards */}
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto px-4"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto px-4 mb-10"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.8 }}
           >
-            <motion.div 
+            <motion.div
               className="glass-effect rounded-2xl md:rounded-3xl p-6 md:p-8 hover:scale-105 hover:-translate-y-2 transition-all duration-500 cursor-pointer group"
               whileHover={{ boxShadow: "0 20px 60px -10px rgba(0,0,0,0.2)" }}
             >
               <motion.div
                 animate={{ rotate: [0, 5, -5, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
               >
-                 <img
+                <img
                   src={clock}
                   alt="Girl in a jacket"
                   className="h-10 w-10 md:h-12 md:w-12 text-accent mx-auto mb-4 group-hover:scale-110 transition-transform "
                 />
               </motion.div>
-              <h3 className="font-bold text-lg md:text-xl mb-3 text-primary">Clinic Hours</h3>
-              <p className="text-sm md:text-base text-muted-foreground font-medium">9:30 AM - 1:30 PM</p>
-              <p className="text-sm md:text-base text-muted-foreground font-medium">6:00 PM - 8:30 PM</p>
+              <h3 className="font-bold text-lg md:text-xl mb-3 text-primary">
+                Clinic Hours
+              </h3>
+              <p className="text-sm md:text-base text-muted-foreground font-medium">
+                9:30 AM - 1:30 PM
+              </p>
+              <p className="text-sm md:text-base text-muted-foreground font-medium">
+                6:00 PM - 8:30 PM
+              </p>
             </motion.div>
-            
-            <motion.div 
+            <motion.div
               className="glass-effect rounded-2xl md:rounded-3xl p-6 md:p-8 hover:scale-105 hover:-translate-y-2 transition-all duration-500 cursor-pointer group"
               whileHover={{ boxShadow: "0 20px 60px -10px rgba(0,0,0,0.2)" }}
             >
               <motion.div
                 animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
               >
-                  <img
+                <img
                   src={online}
                   alt="Girl in a jacket"
                   className="h-10 w-10 md:h-12 md:w-12 text-accent mx-auto mb-4 group-hover:scale-110 transition-transform "
                 />
               </motion.div>
-              <h3 className="font-bold text-lg md:text-xl mb-3 text-secondary">Teleconsultation</h3>
-              <p className="text-sm md:text-base text-muted-foreground">Available for remote</p>
-              <p className="text-sm md:text-base text-muted-foreground">consultations</p>
+              <h3 className="font-bold text-lg md:text-xl mb-3 text-secondary">
+                Teleconsultation
+              </h3>
+              <p className="text-sm md:text-base text-muted-foreground">
+                Available for remote
+              </p>
+              <p className="text-sm md:text-base text-muted-foreground">
+                consultations
+              </p>
             </motion.div>
-            
-            <motion.div 
+            <motion.div
               className="glass-effect rounded-2xl md:rounded-3xl p-6 md:p-8 hover:scale-105 hover:-translate-y-2 transition-all duration-500 cursor-pointer group sm:col-span-2 lg:col-span-1"
               whileHover={{ boxShadow: "0 20px 60px -10px rgba(0,0,0,0.2)" }}
             >
               <motion.div
                 animate={{ scale: [1, 1.1, 1] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
               >
-                  <img
+                <img
                   src={cons}
                   alt="Girl in a jacket"
                   className="h-10 w-10 md:h-12 md:w-12 text-accent mx-auto mb-4 group-hover:scale-110 transition-transform "
                 />
               </motion.div>
-              <h3 className="font-bold text-lg md:text-xl mb-3 text-primary">Consultation Fee</h3>
-              <p className="text-3xl md:text-4xl font-bold gradient-text">₹1,000</p>
+              <h3 className="font-bold text-lg md:text-xl mb-3 text-primary">
+                Consultation Fee
+              </h3>
+              <p className="text-xl md:text-2xl font-bold gradient-text">
+                ₹1,000
+              </p>
             </motion.div>
+            <motion.a
+              href="https://www.google.com/maps/dir//C4A%2F52A,+Major+S+Srikumar+Marg,+near+JANAKPURI+SUPER+SPECIALITY+HOSPITAL,+Janakpuri,+Delhi,+110058/@28.6207926,77.0075136,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x390d04afaaaaaaab:0xe082cc2bada07a44!2m2!1d77.089915!2d28.6208175?entry=ttu&g_ep=EgoyMDI1MTAxMi4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block glass-effect rounded-2xl md:rounded-3xl p-6 md:p-8 hover:scale-105 hover:-translate-y-2 transition-all duration-500 cursor-pointer group sm:col-span-2 lg:col-span-1"
+              whileHover={{ boxShadow: "0 20px 60px -10px rgba(0,0,0,0.2)" }}
+              aria-label="Open directions to Stay Ahead Clinic in Google Maps"
+            >
+              <motion.div
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="mx-auto"
+              >
+                <img
+                  src={location}
+                  alt="location icon"
+                  className="h-10 w-10 md:h-12 md:w-12 mx-auto mb-4 group-hover:scale-110 transition-transform"
+                  loading="lazy"
+                />
+              </motion.div>
+
+              <h3 className="font-bold text-lg md:text-xl mb-3 text-primary">
+                Get Directions
+              </h3>
+
+              <p className="text-xs md:text-sm font-semibold gradient-text">
+                Dr Abha Bhatnagar (Stay Ahead Clinic)
+              </p>
+            </motion.a>
           </motion.div>
         </motion.div>
       </div>

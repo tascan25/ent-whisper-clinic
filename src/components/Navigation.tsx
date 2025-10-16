@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sparkles } from "lucide-react";
+import { useHref } from "react-router-dom";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,6 +19,7 @@ const Navigation = () => {
     { name: "Home", href: "#home" },
     { name: "Services", href: "#services" },
     { name: "Contact", href: "#contact" },
+    {name:"About", href: "#about"},
   ];
 
   return (
