@@ -1,44 +1,52 @@
-import React, { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 import { Phone, Clock, Video, PhoneCall } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import cal from "@/assets/icons/cal.png";
 import tel from "@/assets/icons/tel.png";
 import online from "@/assets/icons/online.png";
 import clock from "@/assets/icons/clock.png";
+import docimage from "@/assets/Images/docimage.jpg";
 
 const About = () => {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.25 });
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   return (
     <section
       id="about"
       className="py-16 md:py-24 px-4 relative overflow-hidden"
-      aria-labelledby="about-heading"
     >
       <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-background to-background" />
 
-      {/* Animated background bubble (subtle, keeps theme) */}
+      {/* Animated background */}
       <motion.div
         className="absolute bottom-20 left-10 w-80 h-80 rounded-full bg-primary/10 blur-3xl"
-        animate={{ scale: [1, 1.15, 1], x: [0, 24, 0] }}
-        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-        aria-hidden
+        animate={{
+          scale: [1, 1.2, 1],
+          x: [0, 30, 0],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
       />
 
       <div className="container mx-auto max-w-6xl relative z-10">
-        {/* Header */}
-        <motion.header
+        <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 24 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8 }}
           className="text-center mb-12 md:mb-20"
         >
           <motion.div
-            initial={{ opacity: 0, scale: 0.85 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.85 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={
+              isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }
+            }
             transition={{ duration: 0.6 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-effect mb-6"
           >
@@ -46,121 +54,132 @@ const About = () => {
             <span className="text-sm font-medium">Book Your Visit</span>
           </motion.div>
 
-          <h2 id="about-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 gradient-text px-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 gradient-text px-4">
             About Us
           </h2>
 
           <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto px-4 leading-relaxed italic font-serif">
-            Meet the Experts Behind the Care — compassionate, experienced, and dedicated to your wellbeing.
+            Meet the Experts Behind the Care
           </p>
-        </motion.header>
+        </motion.div>
 
-        {/* Card */}
-        <motion.section
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="glass-effect rounded-2xl md:rounded-3xl p-6 md:p-10 max-w-4xl mx-auto group hover:scale-[1.02] transition-all duration-500 shadow-sm"
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="glass-effect rounded-2xl md:rounded-3xl p-6 md:p-12 max-w-5xl mx-auto group hover:scale-[1.02] transition-all duration-500"
           whileHover={{ boxShadow: "var(--shadow-xl)" }}
-          aria-labelledby="about-card-heading"
         >
-          <div className="flex flex-col md:flex-row items-center gap-6">
-            {/* Left: image/avatar */}
-            <div className="w-full md:w-1/3 flex justify-center">
-              <div className="rounded-xl overflow-hidden w-44 h-44 md:w-52 md:h-52 flex-shrink-0 shadow-md ring-1 ring-primary/10">
-                {/* Placeholder image — swap with actual image or <Image> component if using next/image */}
-                <img
-                  src={cal}
-                  alt="Clinic team portrait"
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
+          <div className="grid md:grid-cols-5 gap-8 md:gap-12 items-center">
+            {/* Image Section */}
+            <motion.div
+              className="md:col-span-2 flex justify-center"
+              initial={{ opacity: 0, x: -30 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+            >
+              <div className="relative">
+                <div className="w-48 h-48 md:w-64 md:h-64 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/5 backdrop-blur-sm flex items-center justify-center overflow-hidden border border-primary/20 shadow-2xl">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent" />
+                  <div className="text-6xl md:text-8xl "><img src={docimage} alt={"Doc Image!"}/></div>
+                </div>
+                <motion.div
+                  className="absolute -bottom-4 -right-4 bg-primary text-primary-foreground px-4 py-2 rounded-xl shadow-lg"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.5, delay: 1 }}
+                >
+                  <p className="text-xs font-semibold">41+ Years</p>
+                  <p className="text-xs opacity-90">Experience</p>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
 
-            {/* Right: content */}
-            <div className="w-full md:w-2/3">
-              <h3 id="about-card-heading" className="text-xl md:text-2xl font-semibold mb-3">
-                Compassionate Care. Clinical Excellence.
-              </h3>
-
-              <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-4">
-                Our multidisciplinary team brings together years of experience in patient-centered care. We blend cutting-edge
-                treatments with a human approach — listening first, explaining clearly, and tailoring plans that fit your life.
-              </p>
-
-              {/* Feature chips */}
-              <div className="grid grid-cols-2 gap-3 mb-5 md:grid-cols-4">
-                <div className="flex items-center gap-2 p-2 rounded-lg bg-muted/10">
-                  <img src={tel} alt="phone icon" className="w-6 h-6" />
-                  <div className="text-xs">
-                    <div className="font-medium">Phone</div>
-                    <div className="text-muted-foreground text-[11px]">+91 12345 67890</div>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2 p-2 rounded-lg bg-muted/10">
-                  <img src={clock} alt="clock icon" className="w-6 h-6" />
-                  <div className="text-xs">
-                    <div className="font-medium">Hours</div>
-                    <div className="text-muted-foreground text-[11px]">Mon–Sat • 9:00 AM – 6:00 PM</div>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2 p-2 rounded-lg bg-muted/10">
-                  <img src={online} alt="online icon" className="w-6 h-6" />
-                  <div className="text-xs">
-                    <div className="font-medium">Teleconsult</div>
-                    <div className="text-muted-foreground text-[11px]">Video & Phone</div>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2 p-2 rounded-lg bg-muted/10">
-                  <img src={cal} alt="calendar icon" className="w-6 h-6" />
-                  <div className="text-xs">
-                    <div className="font-medium">Appointments</div>
-                    <div className="text-muted-foreground text-[11px]">Book online in 2 minutes</div>
-                  </div>
-                </div>
+            {/* Content Section */}
+            <motion.div
+              className="md:col-span-3 space-y-6"
+              initial={{ opacity: 0, x: 30 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+            >
+              <div>
+                <h3 className="text-2xl md:text-3xl font-bold mb-2 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+                  Dr. Abha Bhatnagar
+                </h3>
+                <p className="text-primary font-semibold mb-3">
+                  ENT Surgeon & Specialist
+                </p>
+                <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+                  With over 41 years of dedicated experience in healthcare, we are
+                  committed to providing exceptional patient care through
+                  evidence-based practices and compassionate service. Our practice
+                  combines cutting-edge medical expertise with a personalized approach
+                  to ensure the best outcomes for every patient.
+                </p>
               </div>
 
-              {/* CTA row */}
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Button className="w-full sm:w-auto" aria-label="Book appointment">
-                  <span className="flex items-center gap-2">
-                    <Phone className="h-4 w-4" />
-                    Book Appointment
-                  </span>
-                </Button>
-
-                <Button variant="ghost" className="w-full sm:w-auto" aria-label="Contact us">
-                  <span className="flex items-center gap-2">
-                    <Video className="h-4 w-4" />
-                    Teleconsult
-                  </span>
-                </Button>
+              <div className="border-t border-border/50 pt-6">
+                <h4 className="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">
+                  Qualifications & Expertise
+                </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                  <div className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    <span>MBBS, MD</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    <span>Board Certified</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    <span>Fellowship Training</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    <span>Published Researcher</span>
+                  </div>
+                </div>
               </div>
-            </div>
+
+              <div className="border-t border-border/50 pt-6">
+                <h4 className="text-sm font-semibold mb-4 text-muted-foreground uppercase tracking-wider">
+                  Schedule Your Appointment
+                </h4>
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                  <motion.div
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    className="flex flex-col items-center gap-2 p-3 rounded-xl bg-background/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-colors cursor-pointer"
+                  >
+                    <img src={tel} alt="Phone" className="w-8 h-8 opacity-70" />
+                    <span className="text-xs font-medium">Call Us</span>
+                  </motion.div>
+                  <motion.div
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    className="flex flex-col items-center gap-2 p-3 rounded-xl bg-background/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-colors cursor-pointer"
+                  >
+                    <img src={online} alt="Online" className="w-8 h-8 opacity-70" />
+                    <span className="text-xs font-medium">Online</span>
+                  </motion.div>
+                  <motion.div
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    className="flex flex-col items-center gap-2 p-3 rounded-xl bg-background/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-colors cursor-pointer"
+                  >
+                    <img src={cal} alt="Book" className="w-8 h-8 opacity-70" />
+                    <span className="text-xs font-medium">Book Now</span>
+                  </motion.div>
+                  <motion.div
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    className="flex flex-col items-center gap-2 p-3 rounded-xl bg-background/50 backdrop-blur-sm border border-border/50 hover:border-primary/50 transition-colors cursor-pointer"
+                  >
+                    <img src={clock} alt="Hours" className="w-8 h-8 opacity-70" />
+                    <span className="text-xs font-medium">Hours</span>
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
           </div>
-
-          {/* Bottom: quick stats / specialties */}
-          <div className="mt-6 pt-6 border-t border-muted/10 grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="text-center">
-              <div className="text-2xl font-bold">12+</div>
-              <div className="text-xs text-muted-foreground">Years of combined experience</div>
-            </div>
-
-            <div className="text-center">
-              <div className="text-2xl font-bold">5k+</div>
-              <div className="text-xs text-muted-foreground">Patients cared</div>
-            </div>
-
-            <div className="text-center">
-              <div className="text-2xl font-bold">20</div>
-              <div className="text-xs text-muted-foreground">Specialists on roster</div>
-            </div>
-          </div>
-        </motion.section>
+        </motion.div>
       </div>
     </section>
   );

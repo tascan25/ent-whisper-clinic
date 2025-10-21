@@ -129,7 +129,7 @@ const Contact = () => {
                 <img
                   src={info.icon}
                   alt={info.title + " icon"}
-                  className="w-14 h-14"
+                  className="w-6 h-6 md:w-12 md:h-12"
                 />
               </motion.div>
 
@@ -227,7 +227,7 @@ const Contact = () => {
                 className="flex flex-col sm:flex-row items-center justify-center gap-4 p-4 md:p-6 rounded-2xl bg-primary/5 hover:bg-primary/10 transition-colors"
                 whileHover={{ scale: 1.05 }}
               >
-                <img src={clock} alt="clock icon" className="w-12 h-12 " />
+                <img src={clock} alt="clock icon" className="w-6 h-6 md:w-12 md:h-12 " />
                 <div className="text-center sm:text-left">
                   <p className="font-bold text-base md:text-lg text-primary">
                     Morning Session
