@@ -45,7 +45,7 @@ const Contact = () => {
     {
       icon: location,
       title: "Get Directions",
-      details: ["C4A/52A, Major S Srikumar Marg, Janakpuri, Delhi 110058"],
+      details: ["Stay Ahead Clinic, C4A/52A, Major S Srikumar Marg, Janakpuri, Delhi 110058"],
       // Prefer coordinates for accuracy — you can replace destination with coordinates if desired:
       link: "https://www.google.com/maps/dir/?api=1&destination=28.6208175,77.089915",
       color: "text-accent",
