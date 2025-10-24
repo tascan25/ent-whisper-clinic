@@ -151,9 +151,9 @@ const Contact = () => {
                         className="text-sm md:text-base text-muted-foreground mb-1 font-medium flex flex-row justify-center items-center cursor-pointer"
                         aria-label={`Open directions to ${detail} in Google Maps`}
                       >
-                        <span>
+                        {/* <span>
                           <MapPin className="mr-2 h-5 w-5" />
-                        </span>
+                        </span> */}
                         {detail}
                       </a>
                     );
