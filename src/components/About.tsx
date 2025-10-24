@@ -89,7 +89,7 @@ const About = () => {
                   animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                   transition={{ duration: 0.5, delay: 1 }}
                 >
-                  <p className="text-xs font-semibold">41+ Years</p>
+                  <p className="text-xs font-semibold">35+ Years</p>
                   <p className="text-xs opacity-90">Experience</p>
                 </motion.div>
               </div>
@@ -110,7 +110,7 @@ const About = () => {
                   ENT Surgeon & Specialist
                 </p>
                 <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
-                  With over 41 years of dedicated experience in healthcare, we are
+                  With over 35 years of dedicated experience in healthcare, we are
                   committed to providing exceptional patient care through
                   evidence-based practices and compassionate service. Our practice
                   combines cutting-edge medical expertise with a personalized approach
